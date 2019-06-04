@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>线性渐变色</title>
+<style>
+body{
+    text-align: center;
+}
+canvas{
+    background: grey;
+}
+</style>
+<script>
+    window.onload = function(){
+
+        var canvas = document.getElementsByTagName('canvas')[0];
+        // console.log(canvas);
+        var thr = canvas.getContext('2d');
+        // console.log(thr);
+        thr.beginPath();
+
+        //新建一个矩形
+        thr.rect(100,200,600,400); 
+
+        //声明颜色
+        var color = thr.createLinearGradient(100,400,400,100);
+
+        //添加新的颜色点---  0---起始时的颜色   1---结束时的颜色
+        color.addColorStop(0,'red');
+        color.addColorStop(0.25,'yellow');
+        color.addColorStop(0.5,'green');
+        color.addColorStop(0.75,'blue');
+        color.addColorStop(1,'purple');
+
+        //将color赋值给thr.fillStyle填充
+        thr.fillStyle = color;
+
+        thr.stroke();
+        thr.fill();
+
+
+    }
+</script>
+</head>
+<body>
+    <canvas width="800" height="800"></canvas>    
+</body>
+</html>
